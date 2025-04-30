@@ -35,6 +35,9 @@ format_disk "$bootdisk" "ext4" "/boot"
 format_disk "$efidisk" "vfat" "/boot/efi"
 format_swap "$swapdisk" "swap"
 
+# Mount Root Partition
+mount "$rootdisk" /mnt
+
 # Create Mounting Directories
 mkdir -p /mnt/home
 mkdir -p /mnt/var
@@ -42,7 +45,6 @@ mkdir -p /mnt/boot
 mkdir -p /mnt/boot/efi
 
 # Mount Partitions
-mount "$rootdisk" /mnt
 mount "$homedisk" /mnt/home
 mount "$vardisk" /mnt/var
 mount "$bootdisk" /mnt/boot
@@ -51,7 +53,7 @@ mount "$efidisk" /mnt/boot/efi
 
 # --- Base System Installation ---
 echo "[*] Installing base system..."
-pacstrap /mnt base linux linux-firmware vim sudo grub efibootmgr xfsprogs parted
+pacstrap /mnt base linux linux-firmware vim sudo grub efibootmgr xfsprogs parted base-devel 
 
 # --- Generate fstab ---
 echo "[*] Generating fstab..."
@@ -60,11 +62,12 @@ echo "[*] fstab generated:"
 cat /mnt/etc/fstab
 
 # --- Copy Configuration Files ---
-cp -r ./includes /mnt/root/
-cp ./modules/02-user-setup.sh /mnt/root/
+mkdir -p /mnt/root/bootstrap
+cp -r ./ /mnt/root/bootstrap
+
 
 
 # --- Chroot into the new system ---
 echo "[*] Chrooting into the new system..."
-arch-chroot /mnt bash /root/02-user-setup.sh
+arch-chroot /mnt bash /root/bootstrap/modules/x02-user-setup.sh
 echo "[*] System setup complete!"

@@ -96,7 +96,12 @@ partition_disk() {
     # Find and return the latest partition
     local part
     part=$(lsblk -ln -o NAME "$disk" | grep -oE "${disk##*/}[0-9]+" | sort -n | tail -n1)
+    if [[ -z "$part" ]]; then
+        error "Partition creation failed on $disk"
+    fi
     echo "/dev/$part"
+
+    
 }
 
 # Format Swap function
