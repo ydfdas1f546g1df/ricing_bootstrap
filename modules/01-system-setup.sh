@@ -53,7 +53,7 @@ mount "$efidisk" /mnt/boot/efi
 
 # --- Base System Installation ---
 echo "[*] Installing base system..."
-pacstrap /mnt base linux linux-firmware vim sudo grub efibootmgr xfsprogs parted base-devel 
+pacstrap /mnt base linux linux-firmware vim sudo xfsprogs parted base-devel 
 
 # --- Generate fstab ---
 echo "[*] Generating fstab..."
@@ -64,10 +64,11 @@ cat /mnt/etc/fstab
 # --- Copy Configuration Files ---
 mkdir -p /mnt/root/bootstrap
 cp -r ./ /mnt/root/bootstrap
+chmod -R +x /mnt/root/bootstrap/*
 
 
 
 # --- Chroot into the new system ---
 echo "[*] Chrooting into the new system..."
-arch-chroot /mnt bash /root/bootstrap/modules/x02-user-setup.sh
+arch-chroot /mnt bash /root/bootstrap/modules/x02-user-setup.sh $USERNAME $PASSWORD $ROOT_PASSWORD $HOSTNAME $TIMEZONE $LOCALE $KEYMAP
 echo "[*] System setup complete!"

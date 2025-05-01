@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 # 02-user-setup.sh
 
+# Take arguments
+USERNAME=$1
+PASSWORD=$2
+ROOT_PASSWORD=$3
+TIMEZONE=$4
+LOCALE=$5
+KEYMAP=$6
+HOSTNAME=$7
+
+
 # --- Set Timezone ---
 
 echo "[*] Setting timezone..."
@@ -79,8 +89,16 @@ Description=Post-install Arch Rice Setup
 After=multi-user.target network-online.target
 
 [Service]
+StandardInput=tty
+StandardOutput=journal+console
+StandardError=tty
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=yes
 Type=oneshot
 ExecStart=/root/bootstrap/rice-bootstrap-reboot.sh
+ExecStartPost=/usr/bin/systemctl disable rice-bootstrap.service
 RemainAfterExit=true
 
 [Install]
