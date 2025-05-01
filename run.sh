@@ -3,10 +3,7 @@ set -e
 
 # Install dependencies
 echo "[*] Installing python-pip..."
-pacman -Sy --noconfirm python-pip git
-
-echo "[*] Installing python deps..."
-pip install -r requirements.txt
+pacman -Sy --noconfirm python-archinstall git
 
 # Run the application
 echo "[*] Running base installer..."
