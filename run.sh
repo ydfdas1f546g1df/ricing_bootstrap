@@ -13,7 +13,7 @@ fi
 
 # Make root directory bigger
 echo "[*] Making root directory bigger..."
-mkdir /tmp/newroot
+mkdir /tmp/newroot -p
 echo "[*] Creating tmpfs mount..."
 mount -t tmpfs -o size=2G tmpfs /tmp/newroot
 echo "[*] Copying root filesystem to tmpfs..."
