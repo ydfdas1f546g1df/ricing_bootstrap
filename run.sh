@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+echo "
+[*] Arch Linux Installer
+[*] This script will install Arch Linux with a custom configuration."
+
 # Check if enough free ram is available
 if [ "$(free -m | awk '/^Mem:/{print $4}')" -lt 2048 ]; then
     echo "Not enough free RAM available. At least 2GB is required."
@@ -8,9 +12,13 @@ if [ "$(free -m | awk '/^Mem:/{print $4}')" -lt 2048 ]; then
 fi
 
 # Make root directory bigger
+echo "[*] Making root directory bigger..."
 mkdir /tmp/newroot
-mount -t tmpfs -o size=1G tmpfs /tmp/newroot
+echo "[*] Creating tmpfs mount..."
+mount -t tmpfs -o size=2G tmpfs /tmp/newroot
+echo "[*] Copying root filesystem to tmpfs..."
 rsync -aXS / /tmp/newroot
+echo "[*] Copying /tmp to tmpfs..."
 mount --bind /tmp/newroot /
 
 
