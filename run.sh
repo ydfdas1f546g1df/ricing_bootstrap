@@ -30,11 +30,13 @@ rsync -aAXv --info=progress2 \
   --exclude=/var/tmp \
   / /tmp/newroot\
 
-echo "[*] Copying /tmp to tmpfs..."
+echo "[*] Mount new Root ..."
 mount --bind /tmp/newroot /
 
+df -h
 
 # Install dependencies
+echo "[*] Installing dependencies..."
 pacman -Sy --noconfirm python python-pip git
 pacman -Sy --noconfirm pkgconf gcc make
 
