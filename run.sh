@@ -17,7 +17,7 @@ mkdir /tmp/newroot -p
 echo "[*] Creating tmpfs mount..."
 mount -t tmpfs -o size=2G tmpfs /tmp/newroot
 echo "[*] Copying root filesystem to tmpfs..."
-rsync -aXS / /tmp/newroot
+rsync -aXS --info=progress2 / /tmp/newroot
 echo "[*] Copying /tmp to tmpfs..."
 mount --bind /tmp/newroot /
 
