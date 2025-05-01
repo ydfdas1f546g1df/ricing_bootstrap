@@ -2,7 +2,7 @@
 set -e
 
 # Install dependencies
-pacman -Sy --noconfirm python python-pip git pkgconf
+pacman -Sy --noconfirm python python-pip git pkgconf gcc make 
 
 echo "[*] Creating virtual environment..."
 python -m venv .venv
