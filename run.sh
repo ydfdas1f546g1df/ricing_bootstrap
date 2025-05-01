@@ -15,3 +15,6 @@ pip install archinstall==2.8.3
 # Run the application
 echo "[*] Running base installer..."
 python base_install/main.py
+
+echo "[*] Running post install..."
+deactivate
