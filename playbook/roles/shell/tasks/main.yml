@@ -1,2 +1,6 @@
 ---
 - name: Install zsh
+  ansible.builtin.pacman:
+    name: zsh
+    state: present
+    update_cache: yes
