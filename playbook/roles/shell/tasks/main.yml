@@ -5,9 +5,14 @@
     state: present
     update_cache: yes
 
-- name: Set default shell to Zsh for users
+- name: Get list of real users (UID >= 1000, != root)
+  ansible.builtin.shell: |
+    awk -F: '($3 >= 1000) && ($1 != "nobody") && ($1 != "root") { print $1 }' /etc/passwd
+  register: user_shell_output
+  changed_when: false
+
+- name: Set Zsh for real users
   ansible.builtin.user:
     name: "{{ item }}"
     shell: /usr/bin/zsh
-  loop: "{{ user_list }}"
-  when: item != 'root'
+  loop: "{{ user_shell_output.stdout_lines }}"
