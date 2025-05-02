@@ -8,10 +8,11 @@ from archinstall.lib.interactions.disk_conf import select_disk_config
 from pathlib import Path
 
 from archinstall.lib.locale import LocaleConfiguration
+from archinstall.lib.models.profile_model import ProfileConfiguration
 
 from functions import *
 from archinstall.lib.models import User
-from archinstall.lib.profile import ProfileConfiguration, profile_handler
+from archinstall.lib.profile import profile_handler
 
 
 # -- Define Variables --
