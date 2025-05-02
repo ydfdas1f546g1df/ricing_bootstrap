@@ -6,8 +6,8 @@ export EDITOR=vim
 export PATH="$HOME/bin:$PATH"
 
 # Set a Bash-like prompt: user@host:~/dir $
-export PROMPT="%n@%m:%~ %# "
-export PS1="%n@%m:%~ %# "
+export PROMPT="%n@%m:%~ $ "
+export PS1="%n@%m:%~ $ "
 
 # Enable command auto-correction (optional)
 setopt correct
