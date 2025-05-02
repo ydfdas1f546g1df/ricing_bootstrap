@@ -1,2 +1,25 @@
 ---
-- name:
+- name: Clone YAY from AUR
+  become: yes
+  ansible.builtin.git:
+    repo: https://aur.archlinux.org/yay.git
+    dest: /tmp/yay
+    version: master
+    clone: yes
+    update: no
+
+- name: Build && Install YAY
+  become: yes
+  ansible.builtin.command:
+    cmd: makepkg -si --noconfirm
+    chdir: /tmp/yay
+  register: yay_install
+  until: yay_install is succeeded
+  retries: 3
+  delay: 5
+
+- name: Remove YAY source
+  become: yes
+  ansible.builtin.file:
+    path: /tmp/yay
+    state: absent
