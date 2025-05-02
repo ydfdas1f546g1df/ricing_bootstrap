@@ -5,5 +5,7 @@
       - base-devel
       - git
       - man
+      - curl
+      - wget
     state: present
     update_cache: yes
