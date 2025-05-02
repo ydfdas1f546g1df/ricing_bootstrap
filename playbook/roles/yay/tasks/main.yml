@@ -1,6 +1,7 @@
 ---
 - name: Clone YAY from AUR
   become: yes
+  become_user: "{{ ansible_user_id }}"
   ansible.builtin.git:
     repo: https://aur.archlinux.org/yay.git
     dest: /tmp/yay
@@ -10,6 +11,7 @@
 
 - name: Build && Install YAY
   become: yes
+  become_user: "{{ ansible_user_id }}"
   ansible.builtin.command:
     cmd: makepkg -si --noconfirm
     chdir: /tmp/yay

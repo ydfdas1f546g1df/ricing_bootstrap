@@ -2,16 +2,18 @@
 - name: Ricing Arch System
   hosts: local
   become: true
+  vars:
+    ansible_user_id: "ansible"
   gather_facts: false
   roles:
     - base
     - yay
-    - ssh
-    - shell
-    - firewall
-    - devtools
-    - hyprland
-    - loginmanager
-    - waybar
-    - dotfiles
-    - backup
+#    - ssh
+#    - shell
+#    - firewall
+#    - devtools
+#    - hyprland
+#    - loginmanager
+#    - waybar
+#    - dotfiles
+#    - backup
