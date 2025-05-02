@@ -13,11 +13,12 @@
 
 - name: Configure SSH server
   ansible.builtin.copy:
-    src: files/99-ansible.conf
-    dest: /etc/ssh/sshd_config.d/99-ansible.conf
+    src: files/98-ansible.conf
+    dest: /etc/ssh/sshd_config.d/98-ansible.conf
     owner: root
     group: root
     mode: '0644'
+
   notify:
     - Restart SSH service
 
