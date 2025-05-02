@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-
-from archinstall import Installer
+from archinstall.lib.installer import Installer
 from archinstall.default_profiles.minimal import MinimalProfile
 from archinstall.lib.disk.device_model import FilesystemType
 from archinstall.lib.disk.filesystem import FilesystemHandler
