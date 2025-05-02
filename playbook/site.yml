@@ -1,0 +1,17 @@
+---
+- name: Ricing Arch System
+  hosts: local
+  become: true
+  gather_facts: false
+  roles:
+    - base
+    - yay
+    - ssh
+    - shell
+    - firewall
+    - devtools
+    - hyprland
+    - loginmanager
+    - waybar
+    - dotfiles
+    - backup

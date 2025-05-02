@@ -1,0 +1,8 @@
+---
+- name: Install base packages
+  ansible.builtin.pacman:
+    name:
+      - base-devel
+      - git
+    state: present
+    update_cache: yes
