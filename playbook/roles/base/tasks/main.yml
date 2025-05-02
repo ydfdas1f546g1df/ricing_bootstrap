@@ -4,6 +4,6 @@
     name:
       - base-devel
       - git
+      - man
     state: present
     update_cache: yes
-    
