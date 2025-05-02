@@ -1,0 +1,20 @@
+# Ansible-managed SSH server config fragment
+# Only allow root login with a certificate
+
+Match User root
+AuthenticationMethods publickey
+PermitRootLogin yes
+
+# Disable password login globally
+PasswordAuthentication no
+PermitRootLogin prohibit-password
+
+# Allow only public key auth for everyone
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+
+# Optional: LogLevel and extras for sanity
+LogLevel VERBOSE
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+UsePAM yes

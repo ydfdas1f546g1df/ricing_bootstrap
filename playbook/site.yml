@@ -8,8 +8,8 @@
   roles:
     - base
     - yay
-#    - ssh
-#    - shell
+    - ssh
+    - shell
 #    - firewall
 #    - devtools
 #    - hyprland
