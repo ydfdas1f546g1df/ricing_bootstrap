@@ -20,5 +20,8 @@ pacman -Sy --noconfirm git
 echo "[*] Running base installer..."
 python base_install/main.py
 
+echo "[*] Cloning repository..."
+git clone https://github.com/ydfdas1f546g1df/ricing_bootstrap.git /mnt/root/ricing_bootstrap
+
 echo "[*] Running post install..."
 deactivate
