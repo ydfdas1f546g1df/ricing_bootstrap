@@ -4,6 +4,7 @@
   become: true
   vars:
     ansible_user_id: "ansible"
+    main_user_id: "arch"
   gather_facts: false
   roles:
     - base

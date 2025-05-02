@@ -1,18 +1,24 @@
 ---
 - name: Install zsh
   ansible.builtin.pacman:
-    name: zsh
+    name:
+      - zsh
+      - zsh-completions
+      - zsh-syntax-highlighting
+      - zsh-autosuggestions
     state: present
     update_cache: yes
 
-- name: Get list of real users (UID >= 1000, != root)
-  ansible.builtin.shell: |
-    awk -F: '($3 >= 1000) && ($1 != "nobody") && ($1 != "root") { print $1 }' /etc/passwd
-  register: user_shell_output
-  changed_when: false
-
-- name: Set Zsh for real users
+- name: Set Zsh for main user
   ansible.builtin.user:
-    name: "{{ item }}"
+    name: "{{ main_user_id }}"
     shell: /usr/bin/zsh
-  loop: "{{ user_shell_output.stdout_lines }}"
+
+- name: Copy zsh config to main user
+  ansible.builtin.template:
+    src: zprofile
+    dest: "/home/{{ main_user_id }}/.zprofile"
+    owner: "{{ main_user_id }}"
+    group: "{{ main_user_id }}"
+    mode: '0644'
+  when: main_user_id is defined
