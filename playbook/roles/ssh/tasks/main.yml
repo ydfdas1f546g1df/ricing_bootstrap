@@ -12,8 +12,8 @@
     state: started
 
 - name: Configure SSH server
-  ansible.builtin.template:
-    src: sshd_config.j2
+  ansible.builtin.copy:
+    src: files/99-ansible.conf
     dest: /etc/ssh/sshd_config.d/99-ansible.conf
     owner: root
     group: root
@@ -30,8 +30,8 @@
     mode: '0700'
 
 - name: Add public key for root login
-  ansible.builtin.template:
-    src: authorized_keys
+  ansible.builtin.copy:
+    src: files/authorized_keys
     dest: /root/.ssh/authorized_keys
     owner: root
     group: root
