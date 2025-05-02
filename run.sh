@@ -11,34 +11,9 @@ if [ "$(free -m | awk '/^Mem:/{print $4}')" -lt 2048 ]; then
     exit 1
 fi
 
-# Make root directory bigger
-echo "[*] Making root directory bigger..."
-mkdir /tmp/newroot -p
-echo "[*] Creating tmpfs mount..."
-mount -t tmpfs -o size=2G tmpfs /tmp/newroot
-echo "[*] Copying root filesystem to tmpfs..."
-rsync -aAXv --info=progress2 \
-  --exclude=/proc \
-  --exclude=/sys \
-  --exclude=/dev \
-  --exclude=/run \
-  --exclude=/tmp/newroot \
-  --exclude=/mnt \
-  --exclude=/boot \
-  --exclude=/media \
-  --exclude=/var/run \
-  --exclude=/var/tmp \
-  / /tmp/newroot\
-
-echo "[*] Mount new Root ..."
-mount --bind /tmp/newroot /
-
-df -h
-
 # Install dependencies
 echo "[*] Installing dependencies..."
-pacman -Sy --noconfirm python python-pip git
-pacman -Sy --noconfirm pkgconf gcc make
+pacman -Sy --noconfirm git
 
 echo "[*] Creating virtual environment..."
 python -m venv .venv
