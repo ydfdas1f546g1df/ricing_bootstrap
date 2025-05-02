@@ -30,8 +30,8 @@
     mode: '0700'
 
 - name: Add public key for root login
-  ansible.builtin.copy:
-    src: files/authorized_keys
+  ansible.builtin.template:
+    src: authorized_keys
     dest: /root/.ssh/authorized_keys
     owner: root
     group: root
