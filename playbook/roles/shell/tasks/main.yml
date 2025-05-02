@@ -4,3 +4,10 @@
     name: zsh
     state: present
     update_cache: yes
+
+- name: Set default shell to Zsh for users
+  ansible.builtin.user:
+    name: "{{ item }}"
+    shell: /usr/bin/zsh
+  loop: "{{ user_list }}"
+  when: item != 'root'
