@@ -4,6 +4,7 @@
     cmd: yay --version
   register: yay_check
   ignore_errors: yes
+  changed_when: false
 
 - name: Clone YAY from AUR
   become: yes
