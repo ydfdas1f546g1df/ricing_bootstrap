@@ -3,3 +3,9 @@
   ansible.builtin.pacman:
     name: hyprland
     state: present
+
+- name: Copy Hyprland config
+  ansible.builtin.template:
+    src: hyprland.conf
+    dest: /etc/hypr/hyprland.conf
+    

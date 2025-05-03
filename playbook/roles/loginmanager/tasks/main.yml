@@ -12,6 +12,13 @@
     group: root
     mode: '0755'
 
+- name: Copy Hyprland Session File
+  ansible.builtin.template:
+    src: hyprland.desktop
+    dest: /usr/share/wayland-sessions/hyprland.desktop
+    owner: root
+    group: root
+    mode: '0644'
 
 - name: Copy Config File
   ansible.builtin.template:
@@ -20,6 +27,7 @@
     owner: root
     group: root
     mode: '0644'
+  notify: Restart sddm
 
 - name: Enable SDDM
   ansible.builtin.systemd:

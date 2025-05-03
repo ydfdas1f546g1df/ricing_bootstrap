@@ -1,0 +1,6 @@
+---
+- name: Restart sddm
+  ansible.builtin.systemd:
+    name: sddm.service
+    state: restarted
+  tags: loginmanager
