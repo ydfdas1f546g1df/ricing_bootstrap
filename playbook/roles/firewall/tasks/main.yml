@@ -20,9 +20,15 @@
 #  debug:
 #    var: firewalld_info
 
+- name: Check current default firewall zone
+  ansible.builtin.command: firewall-cmd --get-default-zone
+  register: current_zone
+  changed_when: current_zone.stdout != "home"
+
 
 - name: Set default zone to home
   ansible.builtin.command: firewall-cmd --set-default-zone=home
+  when: current_zone.stdout != "home"
 
 - name: Allow SSH
   ansible.posix.firewalld:
