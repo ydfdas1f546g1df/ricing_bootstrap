@@ -4,8 +4,16 @@
     name: hyprland
     state: present
 
+- name: Create Hyprland config directory
+  ansible.builtin.file:
+    - path: /etc/hypr
+      state: directory
+      mode: '0755'
+      owner: root
+      group: root
+
 - name: Copy Hyprland config
   ansible.builtin.template:
     src: hyprland.conf
     dest: /etc/hypr/hyprland.conf
-    
+
