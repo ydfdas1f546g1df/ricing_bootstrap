@@ -4,6 +4,15 @@
     name: sddm
     state: present
 
+- name: Create sddm config dir
+  ansible.builtin.file:
+    name: /etc/sddm.conf.d
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+    
+
 - name: Copy Config File
   ansible.builtin.template:
     src: 10-hyprland.conf.j2
