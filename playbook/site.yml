@@ -13,8 +13,8 @@
     - shell
     - firewall
     - loginmanager
+    - hyprland
 #    - devtools
-#    - hyprland
 #    - waybar
 #    - dotfiles
 #    - backup

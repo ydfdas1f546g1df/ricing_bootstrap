@@ -1,0 +1,5 @@
+---
+- name: Install Hyprland
+  ansible.builtin.pacman:
+    name: hyprland
+    state: present
