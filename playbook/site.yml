@@ -5,7 +5,7 @@
   vars:
     ansible_user_id: "ansible"
     main_user_id: "arch"
-  gather_facts: false
+  gather_facts: true
   roles:
     - base
     - yay
