@@ -14,10 +14,11 @@
 
 - name: Gather firewalld facts
   ansible.posix.firewalld_info:
+  register: firewalld_info
 
 - name: Print all firewalld facts
   debug:
-    var: ansible_facts.firewalld.zones
+    var: firewalld_info
 
 
 - name: Set default zone to home
