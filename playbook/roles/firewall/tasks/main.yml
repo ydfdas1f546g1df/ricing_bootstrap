@@ -15,6 +15,7 @@
 - name: Gather firewalld facts
   ansible.posix.firewalld_facts:
 
+
 - name: Set default zone to home
   ansible.builtin.command: firewall-cmd --set-default-zone=home
 
