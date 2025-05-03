@@ -13,7 +13,7 @@
     state: started
 
 - name: Gather firewalld facts
-  ansible.posix.firewalld_facts:
+  ansible.posix.firewalld_info:
 
 - name: Print all firewalld facts
   debug:
