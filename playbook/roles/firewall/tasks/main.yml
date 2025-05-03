@@ -16,9 +16,9 @@
   ansible.posix.firewalld_info:
   register: firewalld_info
 
-- name: Print all firewalld facts
-  debug:
-    var: firewalld_info
+#- name: Print all firewalld facts
+#  debug:
+#    var: firewalld_info
 
 
 - name: Set default zone to home

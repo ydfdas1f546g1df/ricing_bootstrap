@@ -1,0 +1,10 @@
+---
+- name: Install SDDM
+  ansible.builtin.pacman:
+    name: sddm
+    state: present
+
+- name: Copy Config File
+  ansible.builtin.template:
+    src: 10-hyprland.conf
+    dest: /etc/sddm.conf.d/10-hyprland.conf

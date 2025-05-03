@@ -12,7 +12,7 @@
     - ssh
     - shell
     - firewall
-#    - loginmanager
+    - loginmanager
 #    - devtools
 #    - hyprland
 #    - waybar
