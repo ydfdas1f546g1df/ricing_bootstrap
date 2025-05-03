@@ -23,10 +23,6 @@
 - name: Set default zone to home
   ansible.builtin.command: firewall-cmd --set-default-zone=home
 
-- name: Set default policy for outgoing to ACCEPT
-  ansible.builtin.command: firewall-cmd --zone=home --set-target=ACCEPT
-
-
 - name: Allow SSH
   ansible.posix.firewalld:
     service: ssh
