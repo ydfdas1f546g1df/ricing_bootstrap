@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=Hyprland (Riced)
 Comment=Hyprland Riced
-Exec=Hyprland --config /etc/hyprland/config
+Exec=Hyprland --config /etc/hypr/hyprland.conf
 Type=Application
