@@ -11,10 +11,10 @@
     - yay
     - ssh
     - shell
-#    - firewall
+    - firewall
+#    - loginmanager
 #    - devtools
 #    - hyprland
-#    - loginmanager
 #    - waybar
 #    - dotfiles
 #    - backup
