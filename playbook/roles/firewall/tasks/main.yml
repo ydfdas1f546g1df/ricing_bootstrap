@@ -32,11 +32,19 @@
     immediate: true
     permanent: true
 
-- name: Allow icmp-echo-request
+- name: Remove ICMP echo-request block
   ansible.posix.firewalld:
-    icmp_block_inversion: false
     zone: home
-    icmp_block: echo-request
     state: disabled
-    immediate: true
-    permanent: true
+    icmp_block: echo-request
+    permanent: yes
+    immediate: yes
+
+
+- name: Allow ICMP ping
+  ansible.posix.firewalld:
+    zone: home
+    icmp_block_inversion: false
+    state: enabled
+    permanent: yes
+    immediate: yes
